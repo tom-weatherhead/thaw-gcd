@@ -1,0 +1,14 @@
+/node_modules/
+/lib/thaw-gcd.min.js
+/lib/thaw-gcd.min.js.map
+/lib/thaw-gcd.es6.js
+/lib/thaw-gcd.es6.min.js
+/lib/thaw-gcd.es6.min.js.map
+/src/
+/test/
+.idea
+.eslintrc
+.travis.yml
+Gruntfile.js
+bower.json
+composer.json

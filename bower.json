@@ -1,0 +1,22 @@
+{
+  "name": "thaw-gcd",
+  "description": "Euclid's greatest common divisor algorithm as a JavaScript library",
+  "keywords": ["euclid", "gcd"],
+  "homepage": "https://github.com/tom-weatherhead/thaw-gcd",
+  "main": ["./lib/gcd.js"],
+  "ignore": [
+    "test",
+    ".gitignore"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tom-weatherhead/thaw-gcd.git"
+  },
+  "authors": [
+    {
+      "name": "Tom Weatherhead",
+      "homepage": "https://github.com/tom-weatherhead"
+    }
+  ],
+  "license": "MIT"
+}
