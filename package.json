@@ -1,6 +1,6 @@
 {
   "name": "thaw-gcd",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Euclid's greatest common divisor algorithm as a JavaScript component",
   "main": "lib/thaw-gcd",
   "homepage": "https://github.com/tom-weatherhead/thaw-gcd#readme",

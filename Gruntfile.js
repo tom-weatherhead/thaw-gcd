@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 				banner : "/**\n" + 
 				         " * <%= pkg.name %>\n" +
 				         " *\n" +
-				         " * @copyright <%= grunt.template.today('yyyy') %> <%= pkg.author %>\n" +
+				         " * @copyright <%= grunt.template.today('yyyy') %> <%= pkg.author.name %>\n" +
 				         " * @license <%= pkg.license %>\n" +
 				         " * @version <%= pkg.version %>\n" +
 				         " */\n"
@@ -45,13 +45,13 @@ module.exports = function(grunt) {
 		},
 		uglify: {
 			options: {
-				banner: "/*\n<%= grunt.template.today('yyyy') %> <%= pkg.author %>\n @version <%= pkg.version %>\n*/",
+				banner: "/*\n<%= grunt.template.today('yyyy') %> <%= pkg.author.name %>\n @version <%= pkg.version %>\n*/",
 				sourceMap: true,
 				sourceMapIncludeSources: true
 			},
 			target: {
 				files: {
-					"lib/gcd.min.js" : ["lib/gcd.js"]
+					"lib/thaw-gcd.min.js" : ["lib/thaw-gcd.js"]
 				}
 			}
 		},
@@ -78,7 +78,7 @@ module.exports = function(grunt) {
 		var data = fs.readFileSync(path.join(__dirname, "lib", "thaw-gcd.es6.js"), "utf8"),
 			minified = require("babel-core").transform(data, {sourceFileName: "thaw-gcd.es6.js", sourceMaps: true, presets: ["babili"]}),
 			pkg = require(path.join(__dirname, "package.json")),
-			banner = "/*\n " + new Date().getFullYear() + " " + pkg.author + "\n @version " + pkg.version + "\n*/\n\"use strict\";";
+			banner = "/*\n " + new Date().getFullYear() + " " + pkg.author.name + "\n @version " + pkg.version + "\n*/\n\"use strict\";";
 
 		fs.writeFileSync(path.join(__dirname, "lib", "thaw-gcd.es6.min.js"), banner + minified.code + "\n//# sourceMappingURL=thaw-gcd.es6.min.js.map", "utf8");
 		grunt.log.ok("1 file created.");
