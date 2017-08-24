@@ -1,2 +1,2 @@
 # thaw-gcd
-Euclid's greatest common divisor algorithm as a JavaScript component
+Euclid's greatest common divisor algorithm as a JavaScript component.
