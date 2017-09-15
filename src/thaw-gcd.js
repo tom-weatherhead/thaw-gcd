@@ -14,7 +14,7 @@
 		n = parseInt(n, 10);
 
 		if (isNaN(m) || isNaN(n)) {
-			throw new Error("Invalid arguments");
+			throw new Error('Invalid arguments');
 		// } else if (m < 0) {
 			// return gcd(-m, n);
 		} else if (n < 0) {

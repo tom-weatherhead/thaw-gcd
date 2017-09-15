@@ -3,27 +3,27 @@
 const fs = require('fs'),
 	path = require('path');
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 	grunt.initConfig({
-		pkg : grunt.file.readJSON('package.json'),
+		pkg: grunt.file.readJSON('package.json'),
 		concat: {
-			options : {
-				banner : '/**\n' + 
-				         ' * <%= pkg.name %>\n' +
-				         ' *\n' +
-				         ' * @copyright <%= grunt.template.today(\'yyyy\') %> <%= pkg.author.name %>\n' +
-				         ' * @license <%= pkg.license %>\n' +
-				         ' * @version <%= pkg.version %>\n' +
-				         ' */\n'
+			options: {
+				banner:	'/**\n' +
+						' * <%= pkg.name %>\n' +
+						' *\n' +
+						' * @copyright <%= grunt.template.today(\'yyyy\') %> <%= pkg.author.name %>\n' +
+						' * @license <%= pkg.license %>\n' +
+						' * @version <%= pkg.version %>\n' +
+						' */\n'
 			},
 			dist: {
-				src : [
+				src: [
 					'<banner>',
 					'src/intro.js',
 					'src/<%= pkg.name %>.js',
 					'src/outro.js'
 				],
-				dest : 'lib/<%= pkg.name %>.es6.js'
+				dest: 'lib/<%= pkg.name %>.es6.js'
 			}
 		},
 		'babel': {
@@ -38,31 +38,41 @@ module.exports = function(grunt) {
 			}
 		},
 		eslint: {
-			target: ['lib/<%= pkg.name %>.es6.js']
+			// ThAW: Why not lint all .js files in the repo?
+			target: [
+				'*.js',
+				'lib/<%= pkg.name %>.es6.js',
+				// 'lib/<%= pkg.name %>.js',
+				'src/<%= pkg.name %>.js',
+				'test/*.js'
+			]
 		},
-		nodeunit : {
-			all : ['test/*.js']
+		nodeunit: {
+			all: ['test/*.js']
 		},
 		uglify: {
 			options: {
 				banner: '/*\n<%= grunt.template.today(\'yyyy\') %> <%= pkg.author.name %>\n @version <%= pkg.version %>\n*/',
+				output: {
+					quote_style: 1		// Use single quotes.
+				},
 				sourceMap: true,
 				sourceMapIncludeSources: true
 			},
 			target: {
 				files: {
-					'lib/<%= pkg.name %>.min.js' : ['lib/<%= pkg.name %>.js']
+					'lib/<%= pkg.name %>.min.js': [ 'lib/<%= pkg.name %>.js' ]
 				}
 			}
 		},
-		watch : {
-			js : {
-				files : '<%= concat.dist.src %>',
-				tasks : 'build'
+		watch: {
+			js: {
+				files: '<%= concat.dist.src %>',
+				tasks: 'build'
 			},
 			pkg: {
-				files : 'package.json',
-				tasks : 'build'
+				files: 'package.json',
+				tasks: 'build'
 			}
 		}
 	});
@@ -75,7 +85,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-babel');
 	grunt.loadNpmTasks('grunt-eslint');
 	grunt.task.registerTask('babili', 'Minifies ES2016+ code', function () {
-		var data = fs.readFileSync(path.join(__dirname, 'lib', 'thaw-gcd.es6.js'), "utf8"),
+		var data = fs.readFileSync(path.join(__dirname, 'lib', 'thaw-gcd.es6.js'), 'utf8'),
 			minified = require('babel-core').transform(data, {sourceFileName: 'thaw-gcd.es6.js', sourceMaps: true, presets: ['babili']}),
 			pkg = require(path.join(__dirname, 'package.json')),
 			banner = '/*\n ' + new Date().getFullYear() + ' ' + pkg.author.name + '\n @version ' + pkg.version + '\n*/\n\'use strict\';';
