@@ -1,4 +1,7 @@
 # thaw-gcd
+
+[![build status](https://secure.travis-ci.org/tom-weatherhead/thaw-gcd.svg)](http://travis-ci.org/tom-weatherhead/thaw-gcd)  [![downloads](https://img.shields.io/npm/dt/thaw-gcd.svg)](https://www.npmjs.com/package/thaw-gcd)
+
 Euclid's greatest common divisor algorithm as a JavaScript component and npm package.
 
 See https://en.wikipedia.org/wiki/Euclidean_algorithm .
