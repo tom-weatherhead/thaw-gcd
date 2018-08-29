@@ -1,5 +1,5 @@
 // var gcd = require("../lib/thaw-gcd.js");
-var gcd = require('..');
+var gcd = require('..').gcd;
 
 // exports["gcd"] = {
 exports.gcd = {

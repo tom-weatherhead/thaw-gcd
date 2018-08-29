@@ -1,9 +1,18 @@
-	// CommonJS, AMD, script tag
+	// Node, AMD & window supported
+
+	const version = '{{VERSION}}';
+
 	if (typeof exports !== 'undefined') {
-		module.exports = gcd;
-	} else if (typeof define === 'function' && define.amd) {
+		module.exports = {
+			version: version,
+			gcd: gcd
+		};
+	} else if (typeof define === 'function' && define.amd !== void 0) {
 		define(() => {
-			return gcd;
+			return {
+				version: version,
+				gcd: gcd
+			};
 		});
 	} else {
 		global.gcd = gcd;
