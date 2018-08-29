@@ -95,6 +95,7 @@ module.exports = function (grunt) {
 
 	// aliases
 	grunt.registerTask('test', ['eslint', 'nodeunit']);
-	grunt.registerTask('build', ['concat', 'replace']);
+	// grunt.registerTask('build', ['concat', 'replace']);
+	grunt.registerTask('build', ['concat']);
 	grunt.registerTask('default', ['build', 'test', 'babili']);
 };
